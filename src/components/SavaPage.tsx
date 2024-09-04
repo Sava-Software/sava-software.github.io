@@ -9,7 +9,7 @@ import savaLogo from '../assets/sava_logo.png'
 import solanaLogo from '../assets/solanaLogo.svg'
 
 const APP_ID = "701187a3-5f38-4b49-90a6-3dbc5db78489";
-const MAX_VOTES = 99;
+const MAX_VOTES = 3;
 
 type Schema = {
   counters: {
