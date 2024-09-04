@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/toaster";
 import savaLogo from '../assets/sava_logo.png'
 import solanaLogo from '../assets/solanaLogo.svg'
 
+// Language Icons: https://devicon.dev/
+
 const APP_ID = "701187a3-5f38-4b49-90a6-3dbc5db78489";
 const MAX_VOTES = 3;
 
