@@ -1,198 +1,198 @@
-import { useRef, createRef, RefObject, useEffect } from "react";
+// import { useEffect } from "react";
 import { AtSign, Github, Mail } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { init, tx, id } from "@instantdb/react";
-import { useToast } from "../hooks/use-toast";
+import { Button } from "@/components/ui/button";
+// import { cn } from "@/lib/utils";
+// import { init, tx, id } from "@instantdb/react";
+// import { useToast } from "../hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
-import savaLogo from '../assets/sava_logo.png'
-import solanaLogo from '../assets/solanaLogo.svg'
+import savaLogo from "../assets/sava_logo.png";
+import solanaLogo from "../assets/solanaLogo.svg";
 
 // Language Icons: https://devicon.dev/
 
-const APP_ID = "701187a3-5f38-4b49-90a6-3dbc5db78489";
-const MAX_VOTES = 3;
+// const APP_ID = "701187a3-5f38-4b49-90a6-3dbc5db78489";
+// // const MAX_VOTES = 3;
+//
+// type Schema = {
+//   counters: {
+//     id: string;
+//     csharpCounter: number;
+//     goCounter: number;
+//     phpCounter: number;
+//   };
+//   "topics-example": {
+//     icon: {
+//       language: string;
+//       rotationAngle: number;
+//       directionAngle: number;
+//     };
+//   };
+// };
 
-type Schema = {
-  counters: {
-    id: string;
-    csharpCounter: number;
-    goCounter: number;
-    phpCounter: number;
-  };
-  "topics-example": {
-    icon: {
-      language: string;
-      rotationAngle: number;
-      directionAngle: number;
-    };
-  };
-};
+// const db = init<Schema>({ appId: APP_ID });
 
-const db = init<Schema>({ appId: APP_ID });
-
-const { usePublishTopic, useTopicEffect } = db.room();
+// const { usePublishTopic, useTopicEffect } = db.room();
 
 // Function to initialize the counters if not present
-const initializeCounters = () => {
-  db.transact([
-    tx.counters[id()].update({
-      csharpCounter: 0,
-      goCounter: 0,
-      phpCounter: 0,
-    }),
-  ]);
-};
+// const initializeCounters = () => {
+//   db.transact([
+//     tx.counters[id()].update({
+//       csharpCounter: 0,
+//       goCounter: 0,
+//       phpCounter: 0,
+//     }),
+//   ]);
+// };
 
-function style(el: HTMLElement, styles: Partial<CSSStyleDeclaration>) {
-  Object.assign(el.style, styles);
-}
+// function style(el: HTMLElement, styles: Partial<CSSStyleDeclaration>) {
+//   Object.assign(el.style, styles);
+// }
 
-function animateSvg(
-  config: { rotationAngle: number; directionAngle: number },
-  target: HTMLDivElement | null
-) {
-  if (!target) return;
+// function animateSvg(
+//   config: { rotationAngle: number; directionAngle: number },
+//   target: HTMLDivElement | null
+// ) {
+//   if (!target) return;
 
-  const rootEl = document.createElement("div");
-  const directionEl = document.createElement("div");
-  const spinEl = document.createElement("div");
+// const rootEl = document.createElement("div");
+// const directionEl = document.createElement("div");
+// const spinEl = document.createElement("div");
 
-  // Copy the SVG content
-  spinEl.innerHTML = target.innerHTML;
-  directionEl.appendChild(spinEl);
-  rootEl.appendChild(directionEl);
-  document.body.appendChild(rootEl); // Append to the body to animate globally
+// Copy the SVG content
+// spinEl.innerHTML = target.innerHTML;
+// directionEl.appendChild(spinEl);
+// rootEl.appendChild(directionEl);
+// document.body.appendChild(rootEl); // Append to the body to animate globally
 
-  // Get the position of the target button
-  const targetRect = target.getBoundingClientRect();
+// Get the position of the target button
+// const targetRect = target.getBoundingClientRect();
 
-  // Set initial styles for the root element (at the button position)
-  style(rootEl, {
-    position: "fixed",
-    top: `${targetRect.top}px`,
-    left: `${targetRect.left}px`,
-    width: `${targetRect.width}px`,
-    height: `${targetRect.height}px`,
-    zIndex: "9999",
-    pointerEvents: "none",
-  });
+// Set initial styles for the root element (at the button position)
+// style(rootEl, {
+//   position: "fixed",
+//   top: `${targetRect.top}px`,
+//   left: `${targetRect.left}px`,
+//   width: `${targetRect.width}px`,
+//   height: `${targetRect.height}px`,
+//   zIndex: "9999",
+//   pointerEvents: "none",
+// });
 
-  // Set initial spin animation styles
-  style(spinEl, {
-    transform: `rotateZ(${config.rotationAngle * 400}deg)`,
-    width: "100%",
-    height: "100%",
-  });
+// Set initial spin animation styles
+// style(spinEl, {
+//   transform: `rotateZ(${config.rotationAngle * 400}deg)`,
+//   width: "100%",
+//   height: "100%",
+// });
 
-  // After a short delay, animate the SVG flying away
-  setTimeout(() => {
-    style(directionEl, {
-      transform: `translate(${Math.random() * 100 - 50}vw, ${
-        Math.random() * 100 - 50
-      }vh) scale(2)`,
-      transition: "transform 1s ease-out, opacity 1s ease-out",
-      opacity: "0",
-    });
-  }, 20);
+// After a short delay, animate the SVG flying away
+// setTimeout(() => {
+//   style(directionEl, {
+//     transform: `translate(${Math.random() * 100 - 50}vw, ${
+//       Math.random() * 100 - 50
+//     }vh) scale(2)`,
+//     transition: "transform 1s ease-out, opacity 1s ease-out",
+//     opacity: "0",
+//   });
+// }, 20);
 
-  // Remove the element after the animation is complete
-  setTimeout(() => rootEl.remove(), 1000);
-}
+// Remove the element after the animation is complete
+// setTimeout(() => rootEl.remove(), 1000);
+// }
 
 const Hero12 = () => {
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
-  const publishIconAnimation = usePublishTopic("icon");
+  // const publishIconAnimation = usePublishTopic("icon");
 
-  const svgRefsInit = {
-    csharpCounter: createRef<HTMLDivElement>(),
-    goCounter: createRef<HTMLDivElement>(),
-    phpCounter: createRef<HTMLDivElement>(),
-  };
+  // const svgRefsInit = {
+  //   csharpCounter: createRef<HTMLDivElement>(),
+  //   goCounter: createRef<HTMLDivElement>(),
+  //   phpCounter: createRef<HTMLDivElement>(),
+  // };
 
-  const svgRefsRef = useRef<{
-    [key: string]: RefObject<HTMLDivElement>;
-  }>(svgRefsInit);
+  // const svgRefsRef = useRef<{
+  //   [key: string]: RefObject<HTMLDivElement>;
+  // }>(svgRefsInit);
 
   // Listen to icon topic and animate the icons
-  useTopicEffect("icon", ({ language, rotationAngle, directionAngle }) => {
-    animateSvg(
-      { rotationAngle, directionAngle },
-      svgRefsRef.current[language]?.current
-    );
-  });
+  // useTopicEffect("icon", ({ language, rotationAngle, directionAngle }) => {
+  //   animateSvg(
+  //     { rotationAngle, directionAngle },
+  //     svgRefsRef.current[language]?.current
+  //   );
+  // });
 
   // Read Data
-  const { data, isLoading, error } = db.useQuery({
-    counters: {},
-  });
+  // const { data, isLoading, error } = db.useQuery({
+  //   counters: {},
+  // });
 
-  useEffect(() => {
-    if (
-      !isLoading &&
-      !error &&
-      data &&
-      (!data.counters || data.counters.length === 0)
-    ) {
-      initializeCounters();
-    }
-  }, [isLoading, error, data]);
+  // useEffect(() => {
+  //   if (
+  //     !isLoading &&
+  //     !error &&
+  //     data &&
+  //     (!data.counters || data.counters.length === 0)
+  //   ) {
+  //     initializeCounters();
+  //   }
+  // }, [isLoading, error, data]);
 
-  const counters = data?.counters?.[0] ?? {
-    csharpCounter: 0,
-    goCounter: 0,
-    phpCounter: 0,
-  };
+  // const counters = data?.counters?.[0] ?? {
+  //   csharpCounter: 0,
+  //   goCounter: 0,
+  //   phpCounter: 0,
+  // };
 
   // Increment and publish animation to the topic
-  const incrementCounter = (
-    counterName: "csharpCounter" | "goCounter" | "phpCounter",
-    language: string
-  ) => {
-    const currentVoteCount = parseInt(
-      localStorage.getItem("voteCount") || "0",
-      10
-    );
-
-    if (currentVoteCount >= MAX_VOTES) {
-      toast({
-        title: "AllocError",
-        description: "ArrayList.add() failed: OutOfVotesError",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Check if `counters` has the `id` property
-    if ("id" in counters) {
-      // Safe to access counters.id now
-      db.transact([
-        tx.counters[counters.id].update({
-          [counterName]: counters[counterName] + 1,
-        }),
-      ]);
-    } else {
-      // Handle the case where counters does not have an `id`
-      console.error("Counters object does not have an 'id' property");
-    }
-
-    localStorage.setItem("voteCount", (currentVoteCount + 1).toString());
-
-    const randomRotation = Math.random() * 360;
-    const randomDirection = Math.random() * 360;
-
-    animateSvg(
-      { rotationAngle: randomRotation, directionAngle: randomDirection },
-      svgRefsRef.current[counterName]?.current
-    );
-    // Publish the animation to the topic
-    publishIconAnimation({
-      language,
-      rotationAngle: randomRotation,
-      directionAngle: randomDirection,
-    } as never);
-  };
+  // const incrementCounter = (
+  //   counterName: "csharpCounter" | "goCounter" | "phpCounter",
+  //   language: string
+  // ) => {
+  //   const currentVoteCount = parseInt(
+  //     localStorage.getItem("voteCount") || "0",
+  //     10
+  //   );
+  //
+  //   if (currentVoteCount >= MAX_VOTES) {
+  //     toast({
+  //       title: "AllocError",
+  //       description: "ArrayList.add() failed: OutOfVotesError",
+  //       variant: "destructive",
+  //     });
+  //     return;
+  //   }
+  //
+  //   // Check if `counters` has the `id` property
+  //   if ("id" in counters) {
+  //     // Safe to access counters.id now
+  //     db.transact([
+  //       tx.counters[counters.id].update({
+  //         [counterName]: counters[counterName] + 1,
+  //       }),
+  //     ]);
+  //   } else {
+  //     // Handle the case where counters does not have an `id`
+  //     console.error("Counters object does not have an 'id' property");
+  //   }
+  //
+  //   localStorage.setItem("voteCount", (currentVoteCount + 1).toString());
+  //
+  //   const randomRotation = Math.random() * 360;
+  //   const randomDirection = Math.random() * 360;
+  //
+  //   animateSvg(
+  //     { rotationAngle: randomRotation, directionAngle: randomDirection },
+  //     svgRefsRef.current[counterName]?.current
+  //   );
+  //   // Publish the animation to the topic
+  //   publishIconAnimation({
+  //     language,
+  //     rotationAngle: randomRotation,
+  //     directionAngle: randomDirection,
+  //   } as never);
+  // };
 
   /*const resetVotes = () => {
         localStorage.removeItem('voteCount');
@@ -205,16 +205,8 @@ const Hero12 = () => {
         <div className="absolute inset-x-0 top-0 z-10 flex size-full items-center justify-center opacity-100"></div>
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           <div className="z-10 flex flex-col items-center gap-6 text-center">
-            <img
-              src={savaLogo}
-              alt="logo"
-              className="h-64"
-            />
-            <img
-              src={solanaLogo}
-              alt="logo"
-              className="h-6 opacity-90"
-            ></img>
+            <img src={savaLogo} alt="logo" className="h-64" />
+            <img src={solanaLogo} alt="logo" className="h-6 opacity-90"></img>
             <div>
               <h1 className="mb-6 text-pretty text-1xl font-bold lg:text-5xl">
                 Build your next project with Sava
@@ -245,7 +237,7 @@ const Hero12 = () => {
               </a>
               {/*<Button onClick={resetVotes} variant="outline">Reset Votes</Button>*/}
             </div>
-            
+
             {/*<div className="mt-20 flex flex-col items-center gap-4">*/}
             {/*  <p className="text-center: text-muted-foreground lg:text-left">*/}
             {/*    What language would you like to see next?*/}
